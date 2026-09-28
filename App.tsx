@@ -10,6 +10,7 @@ import { cartReducer, initialCart } from "./lib/cart";
 export default function App() {
   const [screen, setScreen] = useState<Screen>("menu");
   const [cart, dispatch] = useReducer(cartReducer, initialCart);
+  const [note, setNote] = useState("");
 
   const cartCount = cart.items.reduce((acc, ci) => acc + ci.quantity, 0);
 
@@ -33,8 +34,12 @@ export default function App() {
         {screen === "checkout" && (
           <CheckoutScreen
             items={cart.items}
+            note={note}
+            onNoteChange={setNote}
+            onBack={() => setScreen("cart")}
             onDone={() => {
               dispatch({ type: "clear" });
+              setNote("");
               setScreen("menu");
             }}
           />
