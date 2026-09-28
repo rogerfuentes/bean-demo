@@ -90,7 +90,7 @@ export default function CheckoutScreen({
           returnKeyType="done"
         />
         <Text style={styles.counter}>
-          {note.length}/{NOTE_MAX_LENGTH}
+          {note.length} / {NOTE_MAX_LENGTH}
         </Text>
 
         <View style={styles.actions}>
